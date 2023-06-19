@@ -21,8 +21,8 @@
         <input name="telefone" id="telefone" type="tel" placeholder="(XX) XXXXX-XXXX" class="campo__escrita" ngModel
           #telefone="ngModel" required pattern="(\(?\d{2}\)?s?)(\d{5}\-?\d{4})" />
         <div *ngIf="(telefone?.invalid && telefone?.touched) || telefone?.dirty">
-          <app-mensagem *ngIf="!telefone?.errors?.['required']" mensagem="O campo de telefone deve ser preenchido."></app-mensagem>
-          <app-mensagem *ngIf="!telefone?.errors?.['pattern']" mensagem="O telefone está fora do padrão."></app-mensagem>
+          <app-mensagem *ngIf="telefone?.errors?.['required']" mensagem="O campo de telefone deve ser preenchido."></app-mensagem>
+          <app-mensagem *ngIf="telefone?.errors?.['pattern']" mensagem="O telefone está fora do padrão."></app-mensagem>
         </div>
       </div>
     </div>
@@ -31,14 +31,9 @@
       <input name="email" id="email" type="email" class="campo__escrita" ngModel #email="ngModel" required email />
       <div *ngIf="(email?.invalid && email?.touched) || email?.dirty">
         <app-mensagem *ngIf="email?.errors?.['required']" mensagem="O campo de email deve ser preenchido."></app-mensagem>
-        <span class="erro__texto" *ngIf="email?.errors?.['email']">
-          O campo de email deve seguir este padrão: "exemplo@dominio.com"
-        </span>
         <app-mensagem class="erro__texto" *ngIf="email?.errors?.['email']" mensagem="O campo de email deve seguir este padrão: 'exemplo@dominio.com'"></app-mensagem>
       </div>
     </div>
-
-
 
     <h3 class="principal__subtitulo">Endereço</h3>
 
