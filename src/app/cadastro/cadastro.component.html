@@ -51,7 +51,7 @@
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="cep">CEP</label>
       <input name="cep" id="cep" class="campo__escrita" ngModel required #cep="ngModel"
-        pattern="^\d{2}\d{3}(-?)\d{3}$" minlength="8" maxlength="9" />
+        pattern="^\d{2}\d{3}(-?)\d{3}$" minlength="8" maxlength="9" (blur)="consultaCEP($event)" />
       <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
         <app-mensagem *ngIf="cep?.errors?.['required']"
           mensagem="O campo de cep deve ser preenchido."></app-mensagem>

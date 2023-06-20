@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ConsultaCepService } from '../service/consulta-cep.service';
+import { HttpEvent } from '@angular/common/http';
 
 @Component({
   selector: 'app-cadastro',
@@ -9,9 +11,18 @@ import { NgForm } from '@angular/forms';
 })
 export class CadastroComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private serviceCep: ConsultaCepService
+   ) { }
 
   ngOnInit(): void {
+  }
+
+  consultaCEP(event: any) {
+    return this.serviceCep
+      .getConsultaCep(event.target.value)
+      .subscribe(resultado => console.log(resultado))
   }
 
   cadastrar(form: NgForm){
